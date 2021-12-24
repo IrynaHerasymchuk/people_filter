@@ -1,16 +1,42 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import './App.scss';
-import { getUsers } from './api';
-import { UsersList } from './components/UsersList';
+import { SearchFields } from './components/SearchFields/SearchFields';
+import { UsersList } from './components/UsersList/UsersList';
 
-const usersFromServer = getUsers();
+const URL = 'https://venbest-test.herokuapp.com/';
+
+const getUsers = () => {
+  const [users, setUsers] = useState([]);
+
+  useEffect(() => {
+    fetch(URL)
+      .then(response => response.json())
+      .then((data) => {
+        setUsers(data);
+      });
+  }, []);
+
+  users.forEach((user, index) => {
+    Object.assign(user, { id: index });
+  });
+
+  return users;
+};
 
 export const App = () => {
-  const [query, setQuery] = useState('');
+  const users = getUsers();
+  const [visibleUsers, setVisibleUsers] = useState(users);
 
-  const visibleUsers = () => (
-    usersFromServer.filter(user => user.includes(query))
-  );
+  const handleFilter = (value, filterBy) => {
+    const filteredUsers = users.filter(user => (
+      typeof user[filterBy] === 'string'
+        ? user[filterBy].includes(value)
+        // eslint-disable-next-line eqeqeq
+        : user[filterBy] === value
+    ));
+
+    setVisibleUsers(filteredUsers);
+  };
 
   return (
     <div className="App">
@@ -18,40 +44,14 @@ export const App = () => {
         Search users
       </h1>
 
-      <label htmlFor="name-input">
-        <input
-          type="text"
-          value={query}
-          placeholder="Enter name"
-          id="name-input"
-          className="App__input"
-          onChange={event => setQuery(event.target.value)}
-        />
-      </label>
+      <SearchFields
+        handleFilter={handleFilter}
+      />
 
-      <label htmlFor="name-input">
-        <input
-          type="text"
-          value={query}
-          placeholder="Enter name"
-          id="name-input"
-          className="App__input"
-          onChange={event => setQuery(event.target.value)}
-        />
-      </label>
-
-      <label htmlFor="name-input">
-        <input
-          type="text"
-          value={query}
-          placeholder="Enter name"
-          id="name-input"
-          className="App__input"
-          onChange={event => setQuery(event.target.value)}
-        />
-      </label>
-
-      <UsersList users={visibleUsers} />
+      {visibleUsers.length
+        ? <UsersList users={visibleUsers} />
+        : <UsersList users={users} />
+      }
     </div>
   );
 };
