@@ -31,9 +31,24 @@ export const App = () => {
     const filteredUsers = users.filter(user => (
       typeof user[filterBy] === 'string'
         ? user[filterBy].includes(value)
-        // eslint-disable-next-line eqeqeq
         : user[filterBy] === value
     ));
+
+    setVisibleUsers(filteredUsers);
+  };
+
+  const handleSexFilter = (sexMale, sexFemale) => {
+    const filteredUsers = users.filter((user) => {
+      if (sexMale && !sexFemale) {
+        return user.sex === 'm';
+      }
+
+      if (!sexMale && sexFemale) {
+        return user.sex === 'f';
+      }
+
+      return users;
+    });
 
     setVisibleUsers(filteredUsers);
   };
@@ -46,6 +61,7 @@ export const App = () => {
 
       <SearchFields
         handleFilter={handleFilter}
+        handleSexFilter={handleSexFilter}
       />
 
       {visibleUsers.length
