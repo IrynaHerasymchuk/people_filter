@@ -1,12 +1,11 @@
 /* eslint-disable react/prop-types */
 import React, { useState } from 'react';
+import { SexFilter } from '../SexFilter/SexFilter';
 
 export const SearchFields = ({ handleFilter, handleSexFilter }) => {
   const [firstname, setName] = useState('');
   const [lastname, setLastname] = useState('');
   const [age, setAge] = useState('');
-  const [sexMale, setSexMale] = useState(false);
-  const [sexFemale, setSexFemale] = useState(false);
 
   const handleNameInput = (event) => {
     const { value } = event.target;
@@ -29,37 +28,8 @@ export const SearchFields = ({ handleFilter, handleSexFilter }) => {
     handleFilter(value, 'age');
   };
 
-  // const handleSexInput = (event) => {
-  //   const { checked, name } = event.target;
-
-  //   name === 'm'
-  //     ? setSexMale(checked)
-  //     : setSexFemale(checked);
-
-  //   handleSexFilter(sexMale, sexFemale);
-  // };
-
-  const handleMaleSexInput = (event) => {
-    const { checked } = event.target;
-
-    setSexMale(checked);
-
-    // handleSexFilter(sexMale, sexFemale);
-  };
-
-  const handleFemaleSexInput = (event) => {
-    const { checked } = event.target;
-
-    setSexFemale(checked);
-
-    // eslint-disable-next-line no-console
-    console.log(checked, sexMale, sexFemale);
-
-    handleSexFilter(sexMale, sexFemale);
-  };
-
   return (
-    <div className="seach-fields">
+    <div className="search-fields">
       <label>
         Введите имя:
         <input
@@ -93,33 +63,7 @@ export const SearchFields = ({ handleFilter, handleSexFilter }) => {
         />
       </label>
 
-      <div className="App__checkbox-area">
-        <p>
-          Выберите пол:
-        </p>
-
-        <label>
-          Мужской:
-          <input
-            type="checkbox"
-            checked={sexMale}
-            name="m"
-            className="App__checkbox"
-            onChange={handleMaleSexInput}
-          />
-        </label>
-
-        <label>
-          Женский:
-          <input
-            type="checkbox"
-            checked={sexFemale}
-            name="f"
-            className="App__checkbox"
-            onChange={handleFemaleSexInput}
-          />
-        </label>
-      </div>
+      <SexFilter handleSexFilter={handleSexFilter} />
     </div>
   );
 };

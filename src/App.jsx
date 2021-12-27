@@ -38,17 +38,15 @@ export const App = () => {
   };
 
   const handleSexFilter = (sexMale, sexFemale) => {
-    const filteredUsers = users.filter((user) => {
-      if (sexMale && !sexFemale) {
-        return user.sex === 'm';
-      }
+    let filteredUsers;
 
-      if (!sexMale && sexFemale) {
-        return user.sex === 'f';
-      }
-
-      return users;
-    });
+    if (sexMale && !sexFemale) {
+      filteredUsers = users.filter(user => user.sex === 'm');
+    } else if (!sexMale && sexFemale) {
+      filteredUsers = users.filter(user => user.sex === 'f');
+    } else {
+      filteredUsers = users;
+    }
 
     setVisibleUsers(filteredUsers);
   };
