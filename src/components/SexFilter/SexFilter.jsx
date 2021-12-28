@@ -1,5 +1,6 @@
 /* eslint-disable react/prop-types */
 import React, { useEffect, useState } from 'react';
+import './SexFilter.scss';
 
 export const SexFilter = ({ handleSexFilter }) => {
   const [sexMale, setSexMale] = useState(false);
@@ -20,32 +21,36 @@ export const SexFilter = ({ handleSexFilter }) => {
   }, [sexMale, sexFemale]);
 
   return (
-    <div className="App__checkbox-area">
-      <p>
+    <div className="checkbox-area">
+      <p className="checkbox-area__title">
         Выберите пол:
       </p>
 
-      <label>
-        Мужской:
-        <input
-          type="checkbox"
-          checked={sexMale}
-          name="m"
-          className="App__checkbox"
-          onChange={handleSexChange}
-        />
-      </label>
+      <div className="checkbox-area__wrapper">
+        <label>
+          <input
+            type="checkbox"
+            checked={sexMale}
+            name="m"
+            className="checkbox-area__item"
+            onChange={handleSexChange}
+          />
+          Мужской
+        </label>
+      </div>
 
-      <label>
-        Женский:
-        <input
-          type="checkbox"
-          checked={sexFemale}
-          name="f"
-          className="App__checkbox"
-          onChange={handleSexChange}
-        />
-      </label>
+      <div className="checkbox-area__wrapper">
+        <label>
+          <input
+            type="checkbox"
+            checked={sexFemale}
+            name="f"
+            className="checkbox-area__item"
+            onChange={handleSexChange}
+          />
+          Женский
+        </label>
+      </div>
     </div>
   );
 };

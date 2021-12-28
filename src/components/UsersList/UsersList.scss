@@ -1,0 +1,31 @@
+.users {
+  &__item {
+    padding: 20px 20px;
+    margin-bottom: 30px;
+    background-color: #e7ebf0;
+
+    &:hover {
+      -webkit-box-shadow: 4px 4px 8px 0px rgba(0, 57, 255, 0.08);
+      -moz-box-shadow: 4px 4px 8px 0px rgba(0, 57, 255, 0.08);
+      box-shadow: 4px 4px 8px 0px rgba(0, 57, 255, 0.08);
+    }
+  }
+
+  &__name {
+    font-weight: 700;
+    margin-bottom: 10px;
+    color: #2446ed;
+  }
+
+  &__age {
+    margin-bottom: 10px;
+  }
+
+  &__age-heading {
+    font-weight: 700;
+  }
+
+  &__sex-heading {
+    font-weight: 700;
+  }
+}

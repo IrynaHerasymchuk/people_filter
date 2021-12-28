@@ -54,9 +54,9 @@ export const App = () => {
   return (
     <div className="App">
       <div className="App__search-area">
-        <h1>
-          Search users
-        </h1>
+        <h2 className="App__search-heading">
+          Поиск пользователей
+        </h2>
 
         <SearchFields
           handleFilter={handleFilter}
@@ -64,10 +64,22 @@ export const App = () => {
         />
       </div>
 
-      {visibleUsers.length
-        ? <UsersList users={visibleUsers} />
-        : <UsersList users={users} />
-      }
+      <div className="App__users-list">
+        <h1 className="App__users-heading">
+          Найденные пользователи
+        </h1>
+
+        {!users.length && (
+          <p>
+            Загрузка...
+          </p>
+        )}
+
+        {visibleUsers.length
+          ? <UsersList users={visibleUsers} />
+          : <UsersList users={users} />
+        }
+      </div>
     </div>
   );
 };

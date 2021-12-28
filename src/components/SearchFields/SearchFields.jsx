@@ -1,6 +1,6 @@
-/* eslint-disable react/prop-types */
 import React, { useState } from 'react';
 import { SexFilter } from '../SexFilter/SexFilter';
+import './SearchFields.scss';
 
 export const SearchFields = ({ handleFilter, handleSexFilter }) => {
   const [firstname, setName] = useState('');
@@ -36,7 +36,7 @@ export const SearchFields = ({ handleFilter, handleSexFilter }) => {
           type="text"
           value={firstname}
           placeholder="Введите имя"
-          className="App__input"
+          className="search-fields__input"
           onChange={handleNameInput}
         />
       </label>
@@ -47,7 +47,7 @@ export const SearchFields = ({ handleFilter, handleSexFilter }) => {
           type="text"
           value={lastname}
           placeholder="Введите фамилию"
-          className="App__input"
+          className="search-fields__input"
           onChange={handleLastnameInput}
         />
       </label>
@@ -58,7 +58,7 @@ export const SearchFields = ({ handleFilter, handleSexFilter }) => {
           type="text"
           value={age}
           placeholder="Введите возраст"
-          className="App__input"
+          className="search-fields__input"
           onChange={handleAgeInput}
         />
       </label>

@@ -10,4 +10,30 @@ body {
 .App {
   display: flex;
   justify-content: space-between;
+
+  &__search-area {
+    position: fixed;
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    width: 30%;
+    padding: 46px 40px;
+    background-color: #e7ebf0;
+  }
+
+  &__search-heading {
+    margin-bottom: 50px;
+  }
+
+  &__users-list {
+    display: flex;
+    flex-direction: column;
+    width: 70%;
+    padding: 40px;
+    margin-left: 30%;
+  }
+
+  &__users-heading {
+    margin-bottom: 40px;
+  }
 }

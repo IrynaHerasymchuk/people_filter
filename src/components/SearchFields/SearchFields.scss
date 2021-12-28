@@ -1,0 +1,27 @@
+.search-fields {
+  display: flex;
+  flex-direction: column;
+
+  &__input {
+    display: flex;
+    flex-direction: column;
+    margin: 16px 0 32px;
+    width: 100%;
+    line-height: 200%;
+    background-color: #e7ebf0;
+    border: none;
+    border-bottom: 1px solid #000;
+
+    &:hover {
+      border-bottom: 1px solid #2446ed;
+    }
+
+    &:focus {
+      outline-color: #2446ed;
+    }
+
+    &::placeholder {
+      color: #52595D;
+    }
+  }
+}

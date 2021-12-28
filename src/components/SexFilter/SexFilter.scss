@@ -1,0 +1,22 @@
+.checkbox-area {
+  display: flex;
+  flex-direction: column;
+
+  &__title {
+    margin-bottom: 20px;
+  }
+
+  &__wrapper {
+    margin-bottom: 10px;
+  }
+
+  &__item {
+    position: relative;
+    vertical-align: bottom;
+    margin-right: 8px;
+
+    &:focus {
+      outline-color: #2446ed;
+    }
+  }
+}
