@@ -53,14 +53,16 @@ export const App = () => {
 
   return (
     <div className="App">
-      <h1>
-        Search users
-      </h1>
+      <div className="App__search-area">
+        <h1>
+          Search users
+        </h1>
 
-      <SearchFields
-        handleFilter={handleFilter}
-        handleSexFilter={handleSexFilter}
-      />
+        <SearchFields
+          handleFilter={handleFilter}
+          handleSexFilter={handleSexFilter}
+        />
+      </div>
 
       {visibleUsers.length
         ? <UsersList users={visibleUsers} />
