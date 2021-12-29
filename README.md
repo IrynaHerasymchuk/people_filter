@@ -4,7 +4,7 @@ React application that requests data about people from the server and display th
 
 [DEMO LINK](https://IrynaHerasymchuk.github.io/people_filter/)
 
-Technologies used: React, SASS, HTML5, BEM Methodology
+Technologies used: React, SCSS, HTML5, BEM Methodology
 
 To run this project locally:
 - npm i
